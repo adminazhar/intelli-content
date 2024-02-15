@@ -106,8 +106,13 @@ function intelli_content_handle_form_submission() {
 
         // Check if post was successfully inserted
         if ($post_id) {
-            // Redirect to post edit screen
-            wp_redirect(admin_url("post.php?action=edit&post=$post_id"));
+            // Redirect to post edit screen using JavaScript
+            echo "Redirecting to edit post screen...";
+            ?>
+            <script>
+                window.location.href = '<?php echo admin_url("post.php?action=edit&post=$post_id"); ?>';
+            </script>
+            <?php
             exit;
         } else {
             // Display error notice
