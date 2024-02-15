@@ -35,6 +35,7 @@ function intelli_content_generation_page() {
             $content = intelli_content_generate($keyword);
             ?>
             <div id="generatedContent" class="generated-content">
+                <?php if (!empty( $_POST['generated_content']) ) { ?> <h2>Generated Content</h2> <? } ?>
                 <div class="content-text"><?php echo $content; ?></div>
                 <form method="post" action="">
                     <input type="hidden" name="generated_content" value="<?php echo esc_attr($content); ?>">
@@ -52,13 +53,13 @@ function intelli_content_generation_page() {
 }
 
 function intelli_content_handle_form_submission() {
-    echo "<div style='color:green;'>";
-    echo $_POST['generated_content'];
-    echo "</div>";
     // Handle form submission
     if (isset($_POST['insert_post'])) {
-        // Call intelli_content_generate() function
         $content = ($_POST['generated_content']);
+
+        $extracted_data = extract_title_from_content($content);
+        $title = $extracted_data['title'];
+        $content = $extracted_data['content'];
 
         // Define an array to map block types to their respective tags
         $block_map = array(
@@ -87,14 +88,14 @@ function intelli_content_handle_form_submission() {
             $block_tag = $block_map[$block_type];
 
             // Append the processed paragraph to the content
-            if (!empty ($paragraph)) {
+            if (!empty (trim($paragraph))) {
                 $processed_content .= "<!-- {$block_tag} -->" . wpautop(trim($paragraph, '#*>' . PHP_EOL)) . "<!-- /{$block_tag} -->";
             }
         }
 
         // Create post object
         $post_data = array(
-            'post_title'    => sanitize_text_field($_POST['generated_title']),
+            'post_title'    => sanitize_text_field($title),
             'post_content'  => $processed_content,
             'post_status'   => 'draft',
             'post_type'     => 'post'
@@ -120,6 +121,21 @@ function intelli_content_handle_form_submission() {
 
 add_action('admin_notices', 'intelli_content_handle_form_submission');
 
+
+// Extract title from content and remove it from the content using regex
+function extract_title_from_content($content) {
+    // Match the first <h1> tag and extract its content
+    if (preg_match('/<h1>(.*?)<\/h1>/', $content, $matches)) {
+        $title = $matches[1]; // Extracted title
+        $new_content = preg_replace('/<h1>.*?<\/h1>/', '', $content, 1); // Remove the first occurrence of <h1> tag
+    } else {
+        $title = ''; // No title found
+        $new_content = $content; // Content remains unchanged
+    }
+
+    // Return title and new content
+    return array('title' => $title, 'content' => $new_content);
+}
 
 
 function intelli_content_generate($keyword) {
@@ -165,7 +181,7 @@ function intelli_content_generate($keyword) {
         $data = json_decode($body, true);
 
         if ($response_code === 200 && isset($data['choices'][0]['message']['content'])) {
-            return "<h2>Generated Content</h2>" . $data['choices'][0]['message']['content'];
+            return $data['choices'][0]['message']['content'];
         } elseif (isset($data['error']['message'])) {
             return "<p class='error-message'>". "Error: " . $data['error']['message'] . "</p>";
         } else {
