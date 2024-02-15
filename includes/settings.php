@@ -41,7 +41,7 @@ function intelli_content_settings_page_callback() {
 function intelli_content_api_key_callback() {
     $api_key = get_option('intelli_content_api_key');
     echo '<input type="text" name="intelli_content_api_key" value="' . esc_attr($api_key) . '" />';
-    echo '<p class="description">Enter your OpenAI API Key. If you don\'t have an API Key, you can <a href="https://openai.com/signup/" target="_blank">sign up for one</a> on the OpenAI website.</p>';
+    echo '<p class="description">Enter your OpenAI API Key. If you don\'t have an API Key, you can <a href="https://platform.openai.com/" target="_blank">sign up for one</a> on the OpenAI website.</p>';
     
 }
 
