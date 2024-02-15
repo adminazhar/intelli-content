@@ -27,7 +27,9 @@ Yes, IntelliContent provides customizable settings for model selection, temperat
 
 == Screenshots ==
 
-1. [Include screenshots of the plugin settings page or any relevant interfaces]
+1. Full Content Generation Page
+2. Preview Generated Content before Inserting
+3. Manage settings like Key, Temperature and Model
 
 == Changelog ==
 
