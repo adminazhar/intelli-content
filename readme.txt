@@ -1,6 +1,5 @@
 === IntelliContent ===
 Contributors: officialazhark
-Donate link: https://azhark.com/
 Tags: OpenAI, Content Generation, AI, SEO, Automation
 Requires at least: 5.0
 Tested up to: 6.5.3
@@ -41,6 +40,21 @@ There are 3 different ways to install IntelliContent, as with any other wordpres
 2. Unzip the zip file, which will extract the intelli-content directory to your computer
 3. Upload the intelli-content directory to the /wp-content/plugins/ directory in your web space
 4. Activate the plugin in the Plugin dashboard
+
+== Usage ==
+
+1. Create an account at OpenAI.
+2. Create an API key and insert in the plugin settings (IntelliContent -> Settings).
+3. Enjoy the features of IntelliContent!
+5. ... and always keep an eye on [your OpenAI usage](https://platform.openai.com/account/usage)!
+
+== Open AI ==
+
+The IntelliContent utilizes the API from [OpenAI](https://platform.openai.com). This plugin does not gather any information from your OpenAI account. The data transmitted to the OpenAI servers primarily consists of the content of your article and the context you specify. Please also review their [Privacy Policy](https://openai.com/privacy/) and [Terms of Service](https://openai.com/terms/) for further information.
+
+== Disclaimer ==
+
+IntelliContent is a plugin that helps users connect their websites to IntelliContent like OpenAI's ChatGPT. Users need their own API key and must follow the rules set by the AI service they choose. By using IntelliContent, users agree to watch and manage the content made by the AI and handle any problems or misuse. The developer of IntelliContent and related parties are not responsible for any issues or losses caused by using the plugin or AI-generated content. Users should talk to a legal expert and follow the laws in their area.
 
 == Frequently Asked Questions ==
 
