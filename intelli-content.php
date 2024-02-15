@@ -2,11 +2,12 @@
 /*
 Plugin Name: IntelliContent
 Description: Generate high-quality content using OpenAI's API.
-Version: 1.0
-Author: Your Name
+Version: 0.1
+Author: Azhar Khan
 */
 
 // Plugin code will go here
+require_once (dirname(__FILE__) . '/includes/post_type_benzinga_india.php');
 
 // Add top-level menu for Intelli Content
 function intelli_content_add_menu() {
