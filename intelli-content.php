@@ -187,7 +187,7 @@ function intelli_content_generate($keyword) {
     );
 
     $args = array(
-        'body' => json_encode($data),
+        'body' => wp_json_encode($data),
         'headers' => $headers,
         'timeout' => 30,
     );
