@@ -113,7 +113,7 @@ function intelli_content_handle_form_submission() {
             echo "Redirecting to edit post screen...";
             ?>
             <script>
-                window.location.href = '<?php echo admin_url("post.php?action=edit&post=$post_id"); ?>';
+                window.location.href = '<?php echo esc_url(admin_url("post.php?action=edit&post=$post_id")); ?>';
             </script>
             <?php
             exit;
