@@ -12,12 +12,14 @@
  * Text Domain:       intelli-content
  */
 
+// Top-Level and Sub-Menu
 require_once (dirname(__FILE__) . '/includes/menu.php');
+// Settings Page
 require_once (dirname(__FILE__) . '/includes/settings.php');
+// Helper Functions
 require_once (dirname(__FILE__) . '/includes/helpers.php');
 
 
-// Content generation page callback function
 // Content generation page callback function
 function intelli_content_generation_page() {
     ?>
