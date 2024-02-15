@@ -1,5 +1,6 @@
 === IntelliContent ===
-Contributors: adminazhar
+Contributors: officialazhark
+Donate link: https://azhark.com/
 Tags: WordPress, Plugin, OpenAI, Content Generation, AI, Gutenberg, SEO, Automation
 Requires at least: 5.0
 Tested up to: 6.5.3
@@ -26,7 +27,7 @@ Yes, IntelliContent provides customizable settings for model selection, temperat
 
 == Screenshots ==
 
-[Include screenshots of the plugin settings page or any relevant interfaces]
+1. [Include screenshots of the plugin settings page or any relevant interfaces]
 
 == Changelog ==
 
