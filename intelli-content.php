@@ -146,7 +146,7 @@ function extract_title_from_content($content) {
 
 function intelli_content_generate($keyword) {
     $api_key = get_option('intelli_content_api_key');
-    $model = 'gpt-3.5-turbo-0613'; // Latest GPT-3.5 model
+    $model = get_option('intelli_content_model', 'gpt-3.5-turbo-0613');
     $temperature = get_option('intelli_content_temperature', 0.7);
     $max_tokens = get_option('intelli_content_max_tokens', 1000);
 
