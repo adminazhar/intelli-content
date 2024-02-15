@@ -27,6 +27,8 @@ function intelli_content_generation_page() {
         <h1>Content Generation</h1>
         <div class="content-generation-form">
             <form method="post" action="">
+                <!-- Add nonce field -->
+                <?php wp_nonce_field( 'generate_content_nonce', 'generate_content_nonce_field' ); ?>
                 <p><label for="keyword">Enter a keyword or topic:</label></p>
                 <p><input type="text" id="keyword" name="keyword" value="" class="regular-text"></p>
                 <p><button type="submit" class="button-primary" name="generate_content">Generate Content</button></p>
@@ -34,6 +36,11 @@ function intelli_content_generation_page() {
         </div>
         <?php
         if (isset($_POST['generate_content'])) {
+            // Verify nonce
+            if ( !isset( $_POST['generate_content_nonce_field'] ) || !wp_verify_nonce( $_POST['generate_content_nonce_field'], 'generate_content_nonce' ) ) {
+                wp_die( 'Security check failed!' );
+            }
+            
             $keyword = sanitize_text_field($_POST['keyword']);
             $content = intelli_content_generate($keyword);
             ?>
@@ -41,6 +48,8 @@ function intelli_content_generation_page() {
                 <?php if (!empty( $_POST['generated_content']) ) { ?> <h2>Generated Content</h2> <?php } ?>
                 <div class="content-text"><?php echo esc_html(nl2p($content)); ?></div>
                 <form method="post" action="">
+                    <!-- Add nonce field -->
+                    <?php wp_nonce_field( 'insert_post_nonce', 'insert_post_nonce_field' ); ?>
                     <input type="hidden" name="generated_content" value="<?php echo esc_attr($content); ?>">
                     <input type="hidden" name="generated_title" value="<?php echo esc_attr($keyword); ?>">
                     <p>
@@ -58,6 +67,11 @@ function intelli_content_generation_page() {
 function intelli_content_handle_form_submission() {
     // Handle form submission
     if (isset($_POST['insert_post'])) {
+        // Verify nonce
+        if ( !isset( $_POST['insert_post_nonce_field'] ) || !wp_verify_nonce( $_POST['insert_post_nonce_field'], 'insert_post_nonce' ) ) {
+            wp_die( 'Security check failed!' );
+        }
+        
         $content = ($_POST['generated_content']);
 
         $extracted_data = extract_title_from_content($content);
@@ -113,7 +127,7 @@ function intelli_content_handle_form_submission() {
             echo "Redirecting to edit post screen...";
             ?>
             <script>
-                window.location.href = '<?php echo esc_url(admin_url("post.php?action=edit&post=$post_id")); ?>';
+                window.location.href = '<?php echo esc_url( admin_url( "post.php?action=edit&post=$post_id" ) ); ?>';
             </script>
             <?php
             exit;
@@ -124,7 +138,6 @@ function intelli_content_handle_form_submission() {
             });
         }
     }
-
 }
 
 add_action('admin_notices', 'intelli_content_handle_form_submission');
