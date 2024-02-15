@@ -46,7 +46,7 @@ function intelli_content_generation_page() {
             ?>
             <div id="generatedContent" class="generated-content">
                 <?php if (!empty( $_POST['generated_content']) ) { ?> <h2>Generated Content</h2> <?php } ?>
-                <div class="content-text"><?php echo esc_html(nl2p($content)); ?></div>
+                <div class="content-text"><?php echo wp_kses_post( nl2p($content) ); ?></div>
                 <form method="post" action="">
                     <!-- Add nonce field -->
                     <?php wp_nonce_field( 'insert_post_nonce', 'insert_post_nonce_field' ); ?>
@@ -123,14 +123,13 @@ function intelli_content_handle_form_submission() {
 
         // Check if post was successfully inserted
         if ($post_id) {
-            // Redirect to post edit screen using JavaScript
-            echo "Redirecting to edit post screen...";
+            // Redirect to all post screen using JavaScript
+            echo "Redirecting to all post screen...";
             ?>
-            <script>
-                window.location.href = '<?php echo esc_url( admin_url( "post.php?action=edit&post=$post_id" ) ); ?>';
-            </script>
+                <script>
+                    window.location.href = '<?php echo esc_url( admin_url( 'post.php' ) ); ?>';
+                </script>
             <?php
-            exit;
         } else {
             // Display error notice
             add_action('admin_notices', function() {
