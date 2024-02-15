@@ -18,7 +18,7 @@ function intelli_content_register_settings() {
     register_setting('intelli_content_settings_group', 'intelli_content_api_key');
     register_setting('intelli_content_settings_group', 'intelli_content_model', array(
         'type' => 'string',
-        'default' => 'text-davinci-003', // Default model
+        'default' => 'gpt-3.5-turbo-0613', // Default model
         'sanitize_callback' => 'sanitize_text_field'
     ));
     register_setting('intelli_content_settings_group', 'intelli_content_temperature', array(
@@ -48,7 +48,7 @@ function intelli_content_api_key_callback() {
 function intelli_content_model_callback() {
     $model = get_option('intelli_content_model');
     echo '<input type="text" name="intelli_content_model" value="' . esc_attr($model) . '" />';
-    echo '<p class="description">Enter the OpenAI model to use. Default is "text-davinci-003".</p>';
+    echo '<p class="description">Enter the OpenAI model to use. Default is "gpt-3.5-turbo-0613".</p>';
 }
 
 function intelli_content_temperature_callback() {
