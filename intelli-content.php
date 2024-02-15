@@ -17,26 +17,31 @@ require_once (dirname(__FILE__) . '/includes/settings.php');
 
 
 // Content generation page callback function
+// Content generation page callback function
 function intelli_content_generation_page() {
     ?>
     <div class="wrap">
         <h1>Content Generation</h1>
-        <form method="post" action="">
-            <label for="keyword">Enter a keyword or topic:</label>
-            <input type="text" id="keyword" name="keyword" value="">
-            <button type="submit" class="button-primary" name="generate_content">Generate Content</button>
-        </form>
+        <div class="content-generation-form">
+            <form method="post" action="">
+                <p><label for="keyword">Enter a keyword or topic:</label></p>
+                <p><input type="text" id="keyword" name="keyword" value="" class="regular-text"></p>
+                <p><button type="submit" class="button-primary" name="generate_content">Generate Content</button></p>
+            </form>
+        </div>
         <?php
         if (isset($_POST['generate_content'])) {
             $keyword = sanitize_text_field($_POST['keyword']);
             $content = intelli_content_generate($keyword);
             ?>
-            <div id="generatedContent">
-                <div><?php echo $content; ?></div>
+            <div id="generatedContent" class="generated-content">
+                <div class="content-text"><?php echo $content; ?></div>
                 <form method="post" action="">
                     <input type="hidden" name="generated_content" value="<?php echo esc_attr($content); ?>">
                     <input type="hidden" name="generated_title" value="<?php echo esc_attr($keyword); ?>">
-                    <button type="submit" class="button-primary" name="insert_post">Insert Post</button>
+                    <p>
+                        <button type="submit" class="button-primary" name="insert_post">Insert Post</button>
+                    </p>
                 </form>
             </div>
             <?php
@@ -47,10 +52,13 @@ function intelli_content_generation_page() {
 }
 
 function intelli_content_handle_form_submission() {
+    echo "<div style='color:green;'>";
+    echo $_POST['generated_content'];
+    echo "</div>";
     // Handle form submission
     if (isset($_POST['insert_post'])) {
         // Call intelli_content_generate() function
-        $content = intelli_content_generate($_POST['keyword']);
+        $content = ($_POST['generated_content']);
 
         // Define an array to map block types to their respective tags
         $block_map = array(
@@ -86,7 +94,7 @@ function intelli_content_handle_form_submission() {
 
         // Create post object
         $post_data = array(
-            'post_title'    => sanitize_text_field($_POST['keyword']),
+            'post_title'    => sanitize_text_field($_POST['generated_title']),
             'post_content'  => $processed_content,
             'post_status'   => 'draft',
             'post_type'     => 'post'
