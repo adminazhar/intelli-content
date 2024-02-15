@@ -15,6 +15,33 @@ Effortlessly generate high-quality content with OpenAI-powered AI directly withi
 
 IntelliContent is a WordPress plugin that leverages the power of OpenAI to streamline content generation for your website. Seamlessly integrate AI-generated articles directly into the Gutenberg editor, with customizable settings for model selection, temperature, and more. Enhance your content creation workflow and save time with IntelliContent.
 
+== Installation ==
+
+There are 3 different ways to install IntelliContent, as with any other wordpress.org plugin.
+
+= Using the WordPress dashboard =
+
+1. Navigate to the 'Add New' in the plugins dashboard
+2. Search for 'IntelliContent'
+3. Click 'Install Now'
+4. Activate the plugin on the Plugin dashboard
+
+= Uploading in WordPress Dashboard =
+
+1. Download the latest version of this plugin from https://wordpress.org/plugins/intelli-content/
+2. Navigate to the 'Add New' in the plugins dashboard
+3. Navigate to the 'Upload' area
+4. Select the zip file (from step 1.) from your computer
+5. Click 'Install Now'
+6. Activate the plugin in the Plugin dashboard
+
+= Using FTP =
+
+1. Download the latest version of this plugin from https://wordpress.org/plugins/intelli-content/
+2. Unzip the zip file, which will extract the intelli-content directory to your computer
+3. Upload the intelli-content directory to the /wp-content/plugins/ directory in your web space
+4. Activate the plugin in the Plugin dashboard
+
 == Frequently Asked Questions ==
 
 = How do I generate content with IntelliContent? =
