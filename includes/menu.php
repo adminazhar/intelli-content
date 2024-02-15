@@ -9,7 +9,7 @@ function intelli_content_add_menu() {
         'manage_options',               // Capability required
         'intelli-content-generation',   // Menu slug for Content Generation page
         'intelli_content_generation_page', // Callback function for Content Generation page
-        'dashicons-admin-generic',      // Icon
+        'dashicons-superhero',      // Icon
         20                              // Position
     );
 
