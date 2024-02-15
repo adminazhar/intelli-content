@@ -56,7 +56,8 @@ Yes, IntelliContent provides customizable settings for model selection, temperat
 
 1. Full Content Generation Page
 2. Preview Generated Content before Inserting
-3. Manage settings like Key, Temperature and Model
+3. Direct Insert the Content in Gutenberg Editor
+4. Manage settings like Key, Temperature and Model
 
 == Changelog ==
 
