@@ -13,6 +13,7 @@
  */
 
 require_once (dirname(__FILE__) . '/includes/menu.php');
+require_once (dirname(__FILE__) . '/includes/settings.php');
 
 
 // Content generation page callback function
