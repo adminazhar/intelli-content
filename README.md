@@ -1,7 +1,7 @@
 === IntelliContent ===
 Contributors: officialazhark
 Donate link: https://azhark.com/
-Tags: WordPress, Plugin, OpenAI, Content Generation, AI, Gutenberg, SEO, Automation
+Tags: OpenAI, Content Generation, AI, SEO, Automation
 Requires at least: 5.0
 Tested up to: 6.5.3
 Stable tag: 1.0
