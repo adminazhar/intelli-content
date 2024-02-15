@@ -1,12 +1,17 @@
 <?php
-/*
-Plugin Name: IntelliContent
-Description: Generate high-quality content using OpenAI's API.
-Version: 0.1
-Author: Azhar Khan
-*/
+/**
+ * @wordpress-plugin
+ * Plugin Name:       IntelliContent
+ * Plugin URI:        https://wordpress.org/plugins/intelli-content
+ * Description:       Generate high-quality content using OpenAI's API.
+ * Version:           1.0.0
+ * Author:            Azhar Khan
+ * Author URI:        https://www.azhark.com/
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       intelli-content
+ */
 
-// Plugin code will go here
 require_once (dirname(__FILE__) . '/includes/menu.php');
 
 
