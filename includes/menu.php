@@ -4,8 +4,8 @@
 function intelli_content_add_menu() {
     // Add main menu item for IntelliContent
     add_menu_page(
-        'Intelli Content',              // Page title
-        'Intelli Content',              // Menu title
+        'IntelliContent',              // Page title
+        'IntelliContent',              // Menu title
         'manage_options',               // Capability required
         'intelli-content-generation',   // Menu slug for Content Generation page
         'intelli_content_generation_page', // Callback function for Content Generation page
