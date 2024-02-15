@@ -2,24 +2,26 @@
 
 // Add top-level menu for Intelli Content
 function intelli_content_add_menu() {
+    // Add main menu item for IntelliContent
     add_menu_page(
-        'Content Generation',
-        'Content Generation',
-        'manage_options',
-        'intelli-content-generation',
-        'intelli_content_generation_page',
-        'dashicons-admin-generic',
-        20
+        'Intelli Content',            // Page title
+        'Intelli Content',            // Menu title
+        'manage_options',             // Capability required
+        'intelli-content-generation', // Menu slug for Content Generation page
+        'intelli_content_generation_page', // Callback function for Content Generation page
+        'dashicons-admin-generic',    // Icon
+        20                            // Position
     );
 
     // Add submenu for Settings
     add_submenu_page(
-        'intelli-content',
-        'Settings',
-        'Settings',
-        'manage_options',
-        'intelli-content-settings',
-        'intelli_content_settings_page'
+        'intelli-content-generation',  // Parent slug (Content Generation page)
+        'Settings',                    // Page title
+        'Settings',                    // Menu title
+        'manage_options',              // Capability required
+        'intelli-content-settings',    // Menu slug for Settings page
+        'intelli_content_settings_page' // Callback function for Settings page
     );
+
 }
 add_action('admin_menu', 'intelli_content_add_menu');
