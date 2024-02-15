@@ -39,7 +39,7 @@ function intelli_content_generation_page() {
             ?>
             <div id="generatedContent" class="generated-content">
                 <?php if (!empty( $_POST['generated_content']) ) { ?> <h2>Generated Content</h2> <? } ?>
-                <div class="content-text"><?php echo nl2p($content); ?></div>
+                <div class="content-text"><?php echo esc_html(nl2p($content)); ?></div>
                 <form method="post" action="">
                     <input type="hidden" name="generated_content" value="<?php echo esc_attr($content); ?>">
                     <input type="hidden" name="generated_title" value="<?php echo esc_attr($keyword); ?>">
