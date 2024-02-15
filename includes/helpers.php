@@ -1,4 +1,5 @@
 <?php
+
 // Converts \n\n to <p>
 function nl2p($string)
 {

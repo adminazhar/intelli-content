@@ -1,5 +1,6 @@
 <?php
 
+// Settings Page
 function intelli_content_settings_page() {
     ?>
     <div class="wrap">
