@@ -37,10 +37,12 @@ function intelli_content_generation_page() {
             </form>
         </div>
         <?php
-        // Verify nonce
-        if ( !isset( $_POST['generate_content_nonce_field'] ) || !wp_verify_nonce( $_POST['generate_content_nonce_field'], 'generate_content_nonce' ) ) {
-            wp_die( 'Security check failed!' );
-        } else if (isset($_POST['generate_content'])) {
+        // Check if form is submitted
+        if (isset($_POST['generate_content'])) {
+            // Verify nonce of the form
+            if ( ! isset( $_POST['generate_content_nonce_field'] ) || ! wp_verify_nonce( $_POST['generate_content_nonce_field'], 'generate_content_nonce' ) ) {
+                wp_die( 'Security check failed1!' );
+            }
 
             $keyword = sanitize_text_field($_POST['keyword']);
             $content = intelli_content_generate($keyword);
@@ -66,12 +68,14 @@ function intelli_content_generation_page() {
 }
 
 function intelli_content_handle_form_submission() {
-    // Verify nonce
-    if ( !isset( $_POST['insert_post_nonce_field'] ) || !wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['insert_post_nonce_field'] ) ), 'insert_post_nonce' ) ) {
-        wp_die( 'Security check failed!' );
-    } else if (isset($_POST['insert_post'])) {
+    // Check if form is submitted
+    if (isset($_POST['insert_post'])) {
+        // Verify nonce of the form
+        if ( ! isset( $_POST['insert_post_nonce_field'] ) || ! wp_verify_nonce( $_POST['insert_post_nonce_field'], 'insert_post_nonce' ) ) {
+            wp_die( 'Security check failed2!' );
+        }
 
-        $content = wp_kses_post( $_POST['generated_content'] );
+        $content = wp_kses_post( $_POST['generated_content'] ); 
 
         $extracted_data = intelli_content_extract_title_from_content($content);
         $title = $extracted_data['title'];
