@@ -1,7 +1,7 @@
 <?php
 
 // Converts \n\n to <p>
-function nl2p($string)
+function intelli_content_nl2p($string)
 {
     $paragraphs = '';
 
