@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Add top-level menu for Intelli Content
 function intelli_content_add_menu() {
