@@ -12,6 +12,8 @@
  * Text Domain:       intelli-content
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 // Top-Level and Sub-Menu
 require_once (dirname(__FILE__) . '/includes/menu.php');
 // Settings Page
@@ -46,7 +48,7 @@ function intelli_content_generation_page() {
             ?>
             <div id="generatedContent" class="generated-content">
                 <?php if (!empty( $_POST['generated_content']) ) { ?> <h2>Generated Content</h2> <?php } ?>
-                <div class="content-text"><?php echo wp_kses_post( nl2p($content) ); ?></div>
+                <div class="content-text"><?php echo wp_kses_post( intelli_content_nl2p($content) ); ?></div>
                 <form method="post" action="">
                     <!-- Add nonce field -->
                     <?php wp_nonce_field( 'insert_post_nonce', 'insert_post_nonce_field' ); ?>
@@ -74,7 +76,7 @@ function intelli_content_handle_form_submission() {
         
         $content = ($_POST['generated_content']);
 
-        $extracted_data = extract_title_from_content($content);
+        $extracted_data = intelli_content_extract_title_from_content($content);
         $title = $extracted_data['title'];
         $content = $extracted_data['content'];
 
@@ -143,7 +145,7 @@ add_action('admin_notices', 'intelli_content_handle_form_submission');
 
 
 // Extract title from content and remove it from the content using regex
-function extract_title_from_content($content) {
+function intelli_content_extract_title_from_content($content) {
     // Match the first <h1> tag and extract its content
     if (preg_match('/<h1>(.*?)<\/h1>/', $content, $matches)) {
         $title = $matches[1]; // Extracted title
